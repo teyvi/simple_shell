@@ -61,7 +61,6 @@ void execute_command(char *args[])
 	{
 		execve(ACPATH, args, environ);
 		perror("Execve failed");
-		free(args);
 		_exit(EXIT_FAILURE);
 	}
 	else
