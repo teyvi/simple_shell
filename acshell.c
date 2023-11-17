@@ -106,6 +106,9 @@ int main(void)
 	char *line = NULL;
 	size_t len = 0;
 
+	if (isatty(STDIN_FILENO))
+	{
+
 	while (1)
 	{
 		display_prompt();
@@ -114,7 +117,16 @@ int main(void)
 
 		if (fromuser == -1)
 		{
-			handle_input_error(line);
+			if (feof(stdin)) 
+			{
+				free(line);
+				write(STDOUT_FILENO, "\n", 1);
+				_exit(0);
+			}
+			else
+			{
+				handle_input_error(line);
+			}
 		}
 		else if (fromuser == 1)
 		{
@@ -124,6 +136,17 @@ int main(void)
 		{
 			if (!process_input(line))
 				break;
+		}
+	}
+	}
+	else
+	{
+		while ((fromuser = getline(&line, &len, stdin)) != -1)
+		{
+			if (fromuser > 1)
+			{
+				process_input(line);
+			}
 		}
 	}
 	free(line);
