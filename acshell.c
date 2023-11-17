@@ -30,6 +30,7 @@ int main(void)
 			else
 			{
 				perror("Error reading input");
+				free(line);
 				return (-1);
 			}
 		}
