@@ -55,7 +55,16 @@ int process_input(char *line)
  */
 void execute_command(char *args[])
 {
-	char *ACPATH = pathdir(args[0]);
+	char *ACPATH;
+
+	if (strchr(args[0], '/') != NULL)
+	{
+		ACPATH =strdup(args[0]);
+	}
+	else
+	{
+		ACPATH = pathdir(args[0]);
+	}
 
 	if (ACPATH != NULL)
 	{
