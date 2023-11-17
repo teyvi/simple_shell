@@ -53,4 +53,3 @@ char *pathdir(char *cmd)
 
 	return (result);
 }
-
