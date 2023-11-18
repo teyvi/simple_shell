@@ -24,7 +24,7 @@ int process_input(char *line)
 	line_arg[argid] = NULL;
 
 	if (argid > 0 && strcmp(line_arg[0], "exit") == 0)
-		return (0);
+		exit(0);
 
 	if (argid == 0)
 		return (1);
