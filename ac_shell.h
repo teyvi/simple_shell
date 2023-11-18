@@ -8,6 +8,16 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * non_interactive_mode - Run the shell in non-interactive mode
+ */
+void non_interactive_mode(void);
+
+/**
+ * interactive_mode - Run the shell in interactive mode
+ */
+void interactive_mode(void);
+
 /*
  * display_prompt - Display the shell prompt.
  */
@@ -35,6 +45,7 @@ void execute_command(char *args[]);
 
 /**
  * handle_input_error - Handles invalid user input errors in the shell.
+ * @line: input from user
  */
 void handle_input_error(char *line);
 
